@@ -1,3 +1,36 @@
-<p>
-  board works!
-</p>
+<button>End Turn</button>
+<div class="space">
+  
+</div>
+
+<div class="container">
+  <div class="row">
+    <i class="fas fa-leaf"></i> manpower: {{ manpower }} 
+    <i class="fas fa-industry"></i> production: {{ production }} 
+    <i class="fas fa-flask"></i> science: {{ science }} 
+    <i class="fas fa-hashtag"></i> credits: {{ credits }} 
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <p>Space</p>
+      <ul>
+        <app-card *ngFor="let card of space" [card]="card"></app-card>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <p>Ships</p>
+      <ul>
+        <app-card *ngFor="let card of ships" [card]="card"></app-card>
+      </ul>
+    </div>
+    <div class="col-sm-9">
+      <p>Planets</p>
+      <div class="row" *ngFor="let planet of planets">
+        <app-card-planet [card]="planet" [claimed]="true"></app-card-planet>
+        <app-card-colony [card]="colony" *ngFor="let colony of planet.colonies"></app-card-colony>
+      </div>
+    </div>
+  </div>
+</div>

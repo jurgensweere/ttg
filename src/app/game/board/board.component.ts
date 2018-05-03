@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../game.service';
+import { SpaceCard } from '../space-card';
+import { PlanetCard } from '../planet-card';
+import { ShipCard } from '../ship-card';
 
 @Component({
   selector: 'app-board',
@@ -8,10 +11,29 @@ import { GameService } from '../game.service';
 })
 export class BoardComponent implements OnInit {
 
+  space: SpaceCard[];
+  planets: PlanetCard[];
+  ships: ShipCard[];
+
+  manpower: number;
+  production: number;
+  science: number;
+  credits: number;
+
   constructor(private gameService:GameService) { }
 
   ngOnInit() {
     this.gameService.setupGame();
+    this.gameService.startGame();
+
+    this.space = this.gameService.space;
+    this.planets = this.gameService.planets;
+    this.ships = this.gameService.ships;
+
+    this.manpower = this.gameService.manpower;
+    this.production = this.gameService.production;
+    this.science = this.gameService.science;
+    this.credits = this.gameService.credits;
   }
 
 }

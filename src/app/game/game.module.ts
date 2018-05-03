@@ -6,6 +6,11 @@ import { BoardComponent } from './board/board.component';
 import { CardComponent } from './card/card.component';
 import { GameService } from './game.service';
 import { CardService } from './card.service';
+import { CardAnomalyComponent } from './card-anomaly/card-anomaly.component';
+import { CardEventComponent } from './card-event/card-event.component';
+import { CardColonyComponent } from './card-colony/card-colony.component';
+import { CardPlanetComponent } from './card-planet/card-planet.component';
+import { CardShipComponent } from './card-ship/card-ship.component';
 
 @NgModule({
   imports: [
@@ -13,6 +18,6 @@ import { CardService } from './card.service';
     GameRoutingModule
   ],
   providers: [GameService, CardService ],
-  declarations: [BoardComponent, CardComponent]
+  declarations: [BoardComponent, CardComponent, CardAnomalyComponent, CardEventComponent, CardColonyComponent, CardPlanetComponent, CardShipComponent]
 })
 export class GameModule { }

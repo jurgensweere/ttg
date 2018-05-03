@@ -2,6 +2,7 @@ import { SpaceCard } from "./space-card";
 import { ColonyCard } from "./colony-card";
 
 export class PlanetCard extends SpaceCard {
+    hazzard: number = 0;
     slots: string[] = [];
     colonies: ColonyCard[] = [];
 

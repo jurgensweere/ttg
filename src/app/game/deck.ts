@@ -32,7 +32,7 @@ export const PLAYER_DECK = [
         type: 'colony',
         colonyType: 'utility',
         input: {
-            geel: 1
+            production: 1
         },
         output: {
             card: 2
@@ -52,12 +52,12 @@ export const PLAYER_DECK = [
     }, {
         name: 'Mining Operation',
         type: 'colony',
-        colonyType: 'geel',
+        colonyType: 'production',
         input: {
             manpower: 1
         },
         output: {
-            geel: 1
+            production: 1
         },
         cost: 2,
         hand: true
@@ -81,12 +81,12 @@ export const PLAYER_DECK = [
     }, {
         name: 'Deepcore Mines',
         type: 'colony',
-        colonyType: 'geel',
+        colonyType: 'production',
         input: {
             manpower: 1
         },
         output: {
-            geel: 3
+            production: 3
         },
         cost: 8,
         renown: 2
@@ -115,12 +115,12 @@ export const PLAYER_DECK = [
     }, {
         name: 'Continental Mining',
         type: 'colony',
-        colonyType: 'geel',
+        colonyType: 'production',
         input: {
             manpower: 1
         },
         output: {
-            geel: 2
+            production: 2
         },
         cost: 5,
         renown: 1
@@ -129,7 +129,7 @@ export const PLAYER_DECK = [
         type: 'colony',
         colonyType: 'utility',
         input: {
-            geel: 1
+            production: 1
         },
         output: {
             science: 1
@@ -147,9 +147,9 @@ export const PLAYER_DECK = [
     }, {
         name: 'Automated Mines',
         type: 'colony',
-        colonyType: 'geel',
+        colonyType: 'production',
         output: {
-            geel: 2
+            production: 2
         },
         cost: 7,
         renown: 1
@@ -168,7 +168,7 @@ export const PLAYER_DECK = [
             manpower: 2
         },
         output: {
-            geel: 2
+            production: 2
         },
         cost: 5,
         renown: 1
@@ -176,7 +176,7 @@ export const PLAYER_DECK = [
         name: 'Trade Fleet',
         type: 'ship',
         input: {
-            geel: 1
+            production: 1
         },
         output: {
             card: 2
@@ -187,7 +187,7 @@ export const PLAYER_DECK = [
         type: 'colony',
         colonyType: 'utility',
         input: {
-            geel: 1
+            production: 1
         },
         output: {
             card: 3
@@ -236,7 +236,7 @@ export const PLAYER_DECK = [
         name: 'Stellar Engineers',
         type: 'ship',
         input: {
-            geel: 2
+            production: 2
         },
         output: {
             renown: 2
@@ -258,7 +258,7 @@ export const PLAYER_DECK = [
         type: 'colony',
         colonyType: 'utility',
         input: {
-            geel: 2
+            production: 2
         },
         output: {
             renown: 3
@@ -273,9 +273,9 @@ export const PLAYER_DECK = [
     }, {
         name: 'Penal Mine',
         type: 'colony',
-        colonyType: 'geel',
+        colonyType: 'production',
         output: {
-            geel: 1
+            production: 1
         },
         cost: 3,
         renown: -2
@@ -284,10 +284,10 @@ export const PLAYER_DECK = [
         type: 'colony',
         colonyType: 'utility',
         input: {
-            geel: 1
+            production: 1
         },
         output: {
-            geel: 2
+            production: 2
         },
         cost: 4,
         renown: 1
@@ -329,7 +329,7 @@ export const PLAYER_DECK = [
         name: 'Asteroid Miner',
         type: 'ship',
         output: {
-            geel: 1
+            production: 1
         },
         cost: 5
     }, {
@@ -362,7 +362,7 @@ export const PLAYER_DECK = [
             manpower: 1
         },
         output: {
-            geel: 1
+            production: 1
         },
         cost: 2,
         renown: -2,
@@ -408,12 +408,12 @@ export const PLAYER_DECK = [
     }, {
         name: 'Mining Operation',
         type: 'colony',
-        colonyType: 'geel',
+        colonyType: 'production',
         input: {
             manpower: 1
         },
         output: {
-            geel: 2
+            production: 2
         },
         cost: 2
     }, {
@@ -421,7 +421,7 @@ export const PLAYER_DECK = [
         type: 'colony',
         colonyType: 'utility',
         input: {
-            geel: 2
+            production: 2
         },
         output: {
             card: 4
@@ -438,7 +438,7 @@ export const SPACE_DECK = [
         area: 'core',
         playerCount: 1,
         cost: {
-            geel: 2
+            production: 2
         },
         renown: 3,
         effect: [{
@@ -460,7 +460,7 @@ export const SPACE_DECK = [
         type: 'planet',
         area: 'expanse',
         playerCount: 1,
-        slots: ['geel', 'utility'],
+        slots: ['production', 'utility'],
         hazzard: 1,
         renown: 6
     }, {
@@ -478,13 +478,14 @@ export const SPACE_DECK = [
         area: 'core',
         playerCount: 1,
         slots: ['manpower'],
-        renown: 4
+        renown: 4,
+        hazzard:3 //remove
     }, {
         name: 'Asteroid Field',
         type: 'planet',
         area: 'core',
         playerCount: 1,
-        slots: ['geel'],
+        slots: ['production'],
         renown: 2
     }, {
         name: 'Space Race+',
@@ -492,7 +493,7 @@ export const SPACE_DECK = [
         area: 'expanse',
         playerCount: 1,
         cost: {
-            geel: 3
+            production: 3
         },
         renown: 4,
         effect: [{
@@ -523,7 +524,7 @@ export const SPACE_DECK = [
         playerCount: 1,
         slots: ['utility', 'utility'],
         bonus: { //What is this bonus exactly?
-            geel: 2
+            production: 2
         },
         renown: 2
     }, {
@@ -531,7 +532,7 @@ export const SPACE_DECK = [
         type: 'planet',
         area: 'expanse',
         playerCount: 1,
-        slots: ['manpower', 'geel'],
+        slots: ['manpower', 'production'],
         renown: 5
     }, {
         name: 'Fossil World',
