@@ -6,7 +6,9 @@ export abstract class Card implements Deserializable<Card> {
     name: string;
     type: string;
     tokens: number;
-    start: boolean;
+    start: boolean = false;
+    hand: boolean = false;
+    renown: number = 0;
 
     deserialize(input: any): Card {
         throw new Error("Method not implemented on abstract class.");

@@ -1,6 +1,6 @@
-import { Card } from "./card";
+import { ProcessCard } from "./process-card";
 
-export class ColonyCard extends Card {
+export class ColonyCard extends ProcessCard {
     colonyType: string;
     generate: any; // make this something smart
 

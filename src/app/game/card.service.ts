@@ -6,6 +6,7 @@ import { ColonyCard } from './colony-card';
 import { AnomalyCard } from './anomaly-card';
 import { EventCard } from './event-card';
 import { SpaceCard } from './space-card';
+import { ShipCard } from './ship-card';
 
 @Injectable()
 export class CardService {
@@ -30,6 +31,8 @@ export class CardService {
           return new AnomalyCard().deserialize(card);
       case 'event':
           return new EventCard().deserialize(card);
+      case 'ship':
+        return new ShipCard().deserialize(card);
       default:
           break;
     }
