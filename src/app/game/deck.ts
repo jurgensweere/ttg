@@ -478,8 +478,7 @@ export const SPACE_DECK = [
         area: 'core',
         playerCount: 1,
         slots: ['manpower'],
-        renown: 4,
-        hazzard:3 //remove
+        renown: 4
     }, {
         name: 'Asteroid Field',
         type: 'planet',
