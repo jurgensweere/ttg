@@ -1,40 +1,54 @@
-
+<header>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="mr-auto">
+        <!-- <a class="navbar-brand" href="#">TTG</a> -->
+        <span class="navbar-text mr-2 manpower">
+            <i class="fas fa-leaf"></i> {{ manpower }}
+        </span>
+        <span class="navbar-text mr-2 production">
+            <i class="fas fa-industry"></i> {{ production }}
+        </span>
+        <span class="navbar-text mr-2 science">
+            <i class="fas fa-flask"></i> {{ science }}
+        </span>
+        <span class="navbar-text mr-2 credits">
+            <i class="fas fa-hashtag"></i> {{ credits }}
+        </span>
+        <span class="navbar-text mr-2 renown">
+            <i class="fas fa-rupee-sign"></i> {{ renown }}
+        </span>
+    </div>
+        <button class="btn btn-sm btn-primary" type="button">End Turn</button>
+    </nav>
+</header>
 <div class="container">
-  <button>End Turn</button>
-  
-  <div class="row">
-    <i class="fas fa-leaf"></i> manpower: {{ manpower }} 
-    <i class="fas fa-industry"></i> production: {{ production }} 
-    <i class="fas fa-flask"></i> science: {{ science }} 
-    <i class="fas fa-hashtag"></i> credits: {{ credits }} 
-  </div>
-  <div class="row">
-    <div class="col-sm">
-      <p>Space</p>
-      <ul>
-        <app-card *ngFor="let card of space" [card]="card"></app-card>
-      </ul>
+    <div class="row">
+        <div class="col-sm">
+            <p>Space</p>
+            <ul>
+                <app-card *ngFor="let card of space" [card]="card"></app-card>
+            </ul>
+        </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-3">
-      <p>Ships</p>
-      <ul>
-        <app-card *ngFor="let card of ships" [card]="card"></app-card>
-      </ul>
+    <div class="row">
+        <div class="col-sm-3">
+            <p>Ships</p>
+            <ul>
+                <app-card *ngFor="let card of ships" [card]="card"></app-card>
+            </ul>
+        </div>
+        <div class="col-sm-9">
+            <p>Planets</p>
+            <div class="row" *ngFor="let planet of planets">
+                <app-card-planet [card]="planet" [claimed]="true"></app-card-planet>
+                <app-card-colony [card]="colony" *ngFor="let colony of planet.colonies"></app-card-colony>
+            </div>
+        </div>
     </div>
-    <div class="col-sm-9">
-      <p>Planets</p>
-      <div class="row" *ngFor="let planet of planets">
-        <app-card-planet [card]="planet" [claimed]="true"></app-card-planet>
-        <app-card-colony [card]="colony" *ngFor="let colony of planet.colonies"></app-card-colony>
-      </div>
+    <div class="row">
+        <div class="col-sm">
+            <p>Hand</p>
+            <app-card *ngFor="let card of hand" [card]="card"></app-card>
+        </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm">
-      <p>Hand</p>
-      <app-card *ngFor="let card of hand" [card]="card"></app-card>
-    </div>
-  </div>
 </div>

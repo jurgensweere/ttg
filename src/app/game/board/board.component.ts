@@ -21,6 +21,7 @@ export class BoardComponent implements OnInit {
   production: number;
   science: number;
   credits: number;
+  renown: number;
 
   constructor(private gameService:GameService) { }
 
@@ -37,6 +38,7 @@ export class BoardComponent implements OnInit {
     this.production = this.gameService.production;
     this.science = this.gameService.science;
     this.credits = this.gameService.credits;
+    this.renown = this.gameService.renown;
   }
 
 }

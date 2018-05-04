@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+.manpower {
+    color: #145c05;
+}
+.production {
+    color: #bb8901;
+}
+.science {
+    color: #0474ac;
+}
+.credits {
+    color: #1f1d1d;
+}
+.renown {
+    color: #c99e12;
+}

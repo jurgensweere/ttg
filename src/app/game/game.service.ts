@@ -22,6 +22,7 @@ export class GameService {
   production: number = 0;
   science: number = 0;
   credits: number = 0;
+  renown: number = 0;
 
   playerHand: ProcessCard[];
   playerDeck: ProcessCard[];
@@ -117,7 +118,7 @@ export class GameService {
     this.science = 0;
     this.credits = 0; // Really?
   }
-
+  
   resetBoard() {
     // Reset the board.
     this.ships = [];
@@ -126,10 +127,12 @@ export class GameService {
     this.playerHand = [];
     this.playerDeck = [];
     this.spaceDeck = [];
-
+    
     this.spaceDiscard = [];
     this.playerDiscard = [];
     this.relinquished = [];
+    
+    this.renown = 0;
   }
 
   drawCard(amount:number = 1) {
