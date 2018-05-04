@@ -1,4 +1,4 @@
-<div class="card card-colony">
+<div class="card card-colony float-left" (click)="select()" [ngClass]="{ 'tapped': card.tapped }">
     <h5 class="card-title text-truncate"><i class="fas fa-hashtag"></i>{{ card.cost }} {{ card.name }}</h5>
     <div class="renown">
         <i class="fas fa-rupee-sign"></i>: {{ card.renown }}

@@ -21,6 +21,7 @@
     height: 100px;
     display: flex;
     margin-right: 2px;
+    transition: transform 200ms ease-out;
 }
 .card,
 .card h5 {
@@ -41,4 +42,26 @@
     right: 0px;
     background-color: rgba(0, 0, 0, 0.8);
     padding: 0 5px;
+}
+.card:hover {
+    border: 2px solid #0474ac6b;
+}
+.card.tapped {
+    transform: rotate(90deg);
+}
+.hand-wrapper {
+    max-height: 100vh;
+    position: absolute;
+    bottom: 0;
+    border-radius: 5px 5px 0 0;
+    width: 100vw;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: max-height 200ms ease-out;
+}
+.hand-wrapper.hand-wrapper-closed {
+    max-height: 50px;
+}
+.hand-wrapper > div > p {
+    color: #fff;
 }

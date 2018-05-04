@@ -4,6 +4,8 @@ import { SpaceCard } from '../space-card';
 import { PlanetCard } from '../planet-card';
 import { ShipCard } from '../ship-card';
 import { ProcessCard } from '../process-card';
+import { CardService } from '../card.service';
+import { Card } from '../card';
 
 @Component({
   selector: 'app-board',
@@ -16,29 +18,46 @@ export class BoardComponent implements OnInit {
   planets: PlanetCard[];
   ships: ShipCard[];
   hand: ProcessCard[];
-
+  
   manpower: number;
   production: number;
   science: number;
   credits: number;
   renown: number;
-
-  constructor(private gameService:GameService) { }
-
+  
+  isHandOpen: boolean = false;
+  
+  constructor(private gameService:GameService, private cardService:CardService) { }
+  
   ngOnInit() {
     this.gameService.setupGame();
     this.gameService.startGame();
-
+    
     this.space = this.gameService.space;
     this.planets = this.gameService.planets;
     this.ships = this.gameService.ships;
     this.hand = this.gameService.playerHand;
-
+    
     this.manpower = this.gameService.manpower;
     this.production = this.gameService.production;
     this.science = this.gameService.science;
     this.credits = this.gameService.credits;
     this.renown = this.gameService.renown;
+    
+    this.cardService.cardSelected$.subscribe(card => this.cardSelected(card) );
   }
 
+  toggleHand() {
+    this.isHandOpen = !this.isHandOpen;
+  }
+
+  cardSelected(card:Card) {
+    this.isHandOpen = false;
+    if (card instanceof ProcessCard && this.hand.indexOf(card) >= 0) {
+      console.log('Selected from hand:', card);
+      // Go into some sort of play context for the card
+    } else if (card instanceof ProcessCard ) {
+      card.use();
+    }
+  }
 }

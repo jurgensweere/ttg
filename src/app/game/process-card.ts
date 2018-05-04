@@ -5,6 +5,6 @@ export abstract class ProcessCard extends Card {
     output: any;
 
     use() {
-
+        this.tapped = true;
     }
 }

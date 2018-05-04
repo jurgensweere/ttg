@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ColonyCard } from '../colony-card';
+import { CardService } from '../card.service';
 
 @Component({
   selector: 'app-card-colony',
@@ -9,9 +10,13 @@ import { ColonyCard } from '../colony-card';
 export class CardColonyComponent implements OnInit {
 
   @Input() card: ColonyCard;
-  constructor() { }
+
+  constructor(private cardService:CardService) { }
 
   ngOnInit() {
   }
 
+  select() {
+    this.cardService.selectCard(this.card);
+  }
 }

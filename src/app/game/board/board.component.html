@@ -39,16 +39,17 @@
         </div>
         <div class="col-sm-9">
             <p>Planets</p>
-            <div class="row" *ngFor="let planet of planets">
+            <div *ngFor="let planet of planets">
                 <app-card-planet [card]="planet" [claimed]="true"></app-card-planet>
                 <app-card-colony [card]="colony" *ngFor="let colony of planet.colonies"></app-card-colony>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm">
-            <p>Hand</p>
-            <app-card *ngFor="let card of hand" [card]="card"></app-card>
-        </div>
+</div>
+<div class="hand-wrapper" [ngClass]="{ 'hand-wrapper-closed': !isHandOpen }">
+    <div class="col-sm">
+        <p (click)="toggleHand()">Hand</p>
+        <app-card *ngFor="let card of hand" [card]="card"></app-card>
     </div>
 </div>
+
