@@ -25,17 +25,17 @@
     <div class="row">
         <div class="col-sm">
             <p>Space</p>
-            <ul>
+            <div class="d-flex flex-row">
                 <app-card *ngFor="let card of space" [card]="card"></app-card>
-            </ul>
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-3">
             <p>Ships</p>
-            <ul>
-                <app-card *ngFor="let card of ships" [card]="card"></app-card>
-            </ul>
+            <div class="card-deck">
+            <app-card *ngFor="let card of ships" [card]="card"></app-card>
+            </div>
         </div>
         <div class="col-sm-9">
             <p>Planets</p>

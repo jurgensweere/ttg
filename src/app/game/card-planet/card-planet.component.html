@@ -1,15 +1,14 @@
-<div>
-  <p>{{ card.name }}</p>
-  <div class="slots">
-    <span class="badge" [ngClass]="{'badge-warning': slot == 'production', 'badge-success': slot == 'manpower', 'badge-light': slot == 'utility'}" style="font-size: 2em;" *ngFor="let slot of card.slots">
-      <i class="fas fa-leaf" *ngIf="slot == 'manpower'"></i>
-      <i class="fas fa-cog" *ngIf="slot == 'utility'"></i>
-      <i class="fas fa-industry" *ngIf="slot == 'production'"></i>
-    </span>
-  </div>
-  <span *ngIf="!claimed" style="color: tomato"><i class="fas fa-exclamation-triangle" *ngFor="let h of hazzards"></i></span>
-  <div class="renown">
-    <i class="fas fa-rupee-sign"></i>: {{ card.renown }}
-  </div>
-  <button *ngIf="!claimed">Colonize</button>
+<div class="card card-planet">
+    <h5 class="card-title text-truncate">{{ card.name }}</h5>
+    <div class="slots">
+        <span class="badge" [ngClass]="{'badge-warning': slot == 'production', 'badge-success': slot == 'manpower', 'badge-light': slot == 'utility'}" *ngFor="let slot of card.slots">
+            <i class="fas fa-leaf mr-2" *ngIf="slot == 'manpower'"></i>
+            <i class="fas fa-cog mr-2" *ngIf="slot == 'utility'"></i>
+            <i class="fas fa-industry mr-2" *ngIf="slot == 'production'"></i>
+        </span>
+    </div>
+    <span *ngIf="!claimed" style="color: tomato"><i class="fas fa-exclamation-triangle" *ngFor="let h of hazzards"></i></span>
+    <div class="renown">
+        <i class="fas fa-rupee-sign"></i>: {{ card.renown }}
+    </div>
 </div>

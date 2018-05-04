@@ -1,7 +1,5 @@
-<li class="card">
-  <app-card-anomaly *ngIf="card.type == 'anomaly'" [card]="card"></app-card-anomaly>
-  <app-card-event *ngIf="card.type == 'event'" [card]="card"></app-card-event>
-  <app-card-colony *ngIf="card.type == 'colony'" [card]="card"></app-card-colony>
-  <app-card-ship *ngIf="card.type == 'ship'" [card]="card"></app-card-ship>
-  <app-card-planet *ngIf="card.type == 'planet'" [card]="card"></app-card-planet>
-</li>
+<app-card-anomaly *ngIf="card.type == 'anomaly'" [card]="card"></app-card-anomaly>
+<app-card-event *ngIf="card.type == 'event'" [card]="card"></app-card-event>
+<app-card-colony *ngIf="card.type == 'colony'" [card]="card"></app-card-colony>
+<app-card-ship *ngIf="card.type == 'ship'" [card]="card"></app-card-ship>
+<app-card-planet *ngIf="card.type == 'planet'" [card]="card"></app-card-planet>
