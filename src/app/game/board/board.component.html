@@ -1,9 +1,7 @@
-<button>End Turn</button>
-<div class="space">
-  
-</div>
 
 <div class="container">
+  <button>End Turn</button>
+  
   <div class="row">
     <i class="fas fa-leaf"></i> manpower: {{ manpower }} 
     <i class="fas fa-industry"></i> production: {{ production }} 
@@ -31,6 +29,12 @@
         <app-card-planet [card]="planet" [claimed]="true"></app-card-planet>
         <app-card-colony [card]="colony" *ngFor="let colony of planet.colonies"></app-card-colony>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <p>Hand</p>
+      <app-card *ngFor="let card of hand" [card]="card"></app-card>
     </div>
   </div>
 </div>

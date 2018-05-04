@@ -3,6 +3,7 @@ import { GameService } from '../game.service';
 import { SpaceCard } from '../space-card';
 import { PlanetCard } from '../planet-card';
 import { ShipCard } from '../ship-card';
+import { ProcessCard } from '../process-card';
 
 @Component({
   selector: 'app-board',
@@ -14,6 +15,7 @@ export class BoardComponent implements OnInit {
   space: SpaceCard[];
   planets: PlanetCard[];
   ships: ShipCard[];
+  hand: ProcessCard[];
 
   manpower: number;
   production: number;
@@ -29,6 +31,7 @@ export class BoardComponent implements OnInit {
     this.space = this.gameService.space;
     this.planets = this.gameService.planets;
     this.ships = this.gameService.ships;
+    this.hand = this.gameService.playerHand;
 
     this.manpower = this.gameService.manpower;
     this.production = this.gameService.production;

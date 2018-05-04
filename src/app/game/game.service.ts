@@ -36,41 +36,34 @@ export class GameService {
   constructor(private cardService:CardService) { }
 
   setupGame() {
-    
-    // Reset the board.
-    this.ships = [];
-    this.planets = [];
-    this.space = [];
-    this.playerHand = [];
-    this.playerDeck = [];
-    this.spaceDeck = [];
-
-    this.spaceDiscard = [];
-    this.playerDiscard = [];
-    this.relinquished = [];
-
+    this.resetBoard();
     this.resetResources();
     
     // Create starting point
     this.createSpaceDeck();
     this.createPlayerDeck();
     this.drawSpaceCard();
-
-    // console.log('Space Deck:', this.spaceDeck);
-    // console.log('Player Deck', this.playerDeck);
-    // console.log('Player Hand', this.playerHand);
-    // console.log('Game Board:', this.planets, this.ships);
   }
 
   startGame() {
     console.log('Game started');
-    // draw space card
-    this.drawSpaceCard();
-    // draw card in hand
+    // draw space card equal to the number of players
+    this.drawSpaceCard(this.numPlayers);
+
+    // draw a card in hand
+    this.drawCard();
+
+    // startTurn
+    this.startTurn();
   }
 
   endTurn() {
     this.resetResources();
+  }
+
+  startTurn() {
+    this.drawSpaceCard();
+    // resolve events
   }
 
   createSpaceDeck() {
@@ -125,9 +118,38 @@ export class GameService {
     this.credits = 0; // Really?
   }
 
-  drawSpaceCard() {
-    this.space.push(this.spaceDeck.shift());
-    if (this.space.length > this.numPlayers + 1) {
+  resetBoard() {
+    // Reset the board.
+    this.ships = [];
+    this.planets = [];
+    this.space = [];
+    this.playerHand = [];
+    this.playerDeck = [];
+    this.spaceDeck = [];
+
+    this.spaceDiscard = [];
+    this.playerDiscard = [];
+    this.relinquished = [];
+  }
+
+  drawCard(amount:number = 1) {
+    while (amount > 0) {
+      // If the player deck is empty, re-use the discard pile
+      if (this.playerDeck.length == 0) {
+        this.playerDeck = this.shuffle(this.playerDiscard);
+        this.playerDiscard = []; // maybe this clears the reference to playerdeck now
+      }
+      this.playerHand.push(this.playerDeck.shift());
+      amount--;
+    }
+  }
+
+  drawSpaceCard(amount:number = 1) {
+    while (amount > 0) {
+      this.space.push(this.spaceDeck.shift());
+      amount--;
+    }
+    while (this.space.length > this.numPlayers + 1) {
       this.spaceDiscard.push(this.space.shift());
     }
   }
