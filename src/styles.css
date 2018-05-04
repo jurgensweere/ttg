@@ -21,6 +21,8 @@
     height: 100px;
     display: flex;
     margin-right: 2px;
+    border: 0;
+    background-color: #aaa;
     transition: transform 200ms ease-out;
 }
 .card,
@@ -48,6 +50,21 @@
 }
 .card.tapped {
     transform: rotate(90deg);
+}
+.card-title {
+    border-radius: 0.25rem .25rem 0 0;
+}
+.card-title.production {
+    background-color: #bb8901;
+    color: inherit;
+}
+.card-title.manpower {
+    background-color: #145c05;
+    color: inherit;
+}
+.card-title.utility {
+    background-color: #959695;
+    color: inherit;
 }
 .hand-wrapper {
     max-height: 100vh;
