@@ -156,4 +156,33 @@ export class GameService {
       this.spaceDiscard.push(this.space.shift());
     }
   }
+
+  useCard(card:ProcessCard) {
+    if (card.input) {
+      // try to pay this
+    }
+    // cash out!
+    card.tapped = true;
+    Object.keys(card.output).forEach(currency => {
+      switch (currency) {
+        case 'manpower':
+          this.manpower += card.output[currency];
+          break;
+        case 'production':
+          this.production += card.output[currency];
+          break;
+        case 'science':
+          this.science += card.output[currency];
+          break;
+        case 'renown':
+          this.renown += card.output[currency];
+          break;
+        case 'card':
+          this.drawCard(card.output[currency]);
+          break;
+        default:
+          break;
+      }
+    })
+  }
 }

@@ -19,15 +19,9 @@ export class BoardComponent implements OnInit {
   ships: ShipCard[];
   hand: ProcessCard[];
   
-  manpower: number;
-  production: number;
-  science: number;
-  credits: number;
-  renown: number;
-  
   isHandOpen: boolean = false;
   
-  constructor(private gameService:GameService, private cardService:CardService) { }
+  constructor(public gameService:GameService, private cardService:CardService) { }
   
   ngOnInit() {
     this.gameService.setupGame();
@@ -37,12 +31,6 @@ export class BoardComponent implements OnInit {
     this.planets = this.gameService.planets;
     this.ships = this.gameService.ships;
     this.hand = this.gameService.playerHand;
-    
-    this.manpower = this.gameService.manpower;
-    this.production = this.gameService.production;
-    this.science = this.gameService.science;
-    this.credits = this.gameService.credits;
-    this.renown = this.gameService.renown;
     
     this.cardService.cardSelected$.subscribe(card => this.cardSelected(card) );
   }
@@ -57,7 +45,7 @@ export class BoardComponent implements OnInit {
       console.log('Selected from hand:', card);
       // Go into some sort of play context for the card
     } else if (card instanceof ProcessCard ) {
-      card.use();
+      this.gameService.useCard(card);
     }
   }
 }

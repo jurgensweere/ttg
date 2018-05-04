@@ -3,8 +3,6 @@ import { Card } from "./card";
 export abstract class ProcessCard extends Card {
     input: any;
     output: any;
+    cost: number;
 
-    use() {
-        this.tapped = true;
-    }
 }
