@@ -158,8 +158,31 @@ export class GameService {
   }
 
   useCard(card:ProcessCard) {
+    if (card.tapped || !card.canAfford(this.manpower, this.production, this.science, this.credits, this.renown)) {
+      return;
+    }
     if (card.input) {
-      // try to pay this
+      Object.keys(card.input).forEach(currency => {
+        switch (currency) {
+          case 'manpower':
+            this.manpower -= card.input[currency];
+            break;
+          case 'production':
+            this.production -= card.input[currency];
+            break;
+          case 'science':
+            this.science -= card.input[currency];
+            break;
+          case 'renown':
+            this.renown -= card.input[currency];
+            break;
+          case 'card':
+            this.credits -= card.input[currency];
+            break;
+          default:
+            break;
+        }
+      });
     }
     // cash out!
     card.tapped = true;
@@ -183,6 +206,6 @@ export class GameService {
         default:
           break;
       }
-    })
+    });
   }
 }
