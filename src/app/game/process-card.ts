@@ -9,37 +9,38 @@ export abstract class ProcessCard extends Card {
         if (!this.input) {
             return true;
         }
+        let canAfford = true;
         Object.keys(this.input).forEach(currency => {
             switch (currency) {
                 case 'manpower':
                     if(this.input[currency] > manpower) {
-                        return false;
+                        canAfford = false;
                     }
                     break;
                 case 'production':
                     if(this.input[currency] > production) {
-                        return false;
+                        canAfford = false;
                     }
                     break;
                 case 'science':
                     if(this.input[currency] > science) {
-                        return false;
+                        canAfford = false;
                     }
                     break;
                 case 'renown':
                     if(this.input[currency] > renown) {
-                        return false;
+                        canAfford = false;
                     }
                     break;
                 case 'card':
                     if(this.input[currency] > credits) {
-                        return false;
+                        canAfford = false;
                     }
                     break;
                 default:
                     break;
             }
         });
-        return true;
+        return canAfford;
     }
 }

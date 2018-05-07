@@ -15,8 +15,4 @@ export class CardColonyComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  select() {
-    this.cardService.selectCard(this.card);
-  }
 }

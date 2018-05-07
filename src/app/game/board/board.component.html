@@ -1,32 +1,33 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="mr-auto">
-        <!-- <a class="navbar-brand" href="#">TTG</a> -->
-        <span class="navbar-text mr-2 manpower">
-            <i class="fas fa-leaf"></i> {{ gameService.manpower }}
-        </span>
-        <span class="navbar-text mr-2 production">
-            <i class="fas fa-industry"></i> {{ gameService.production }}
-        </span>
-        <span class="navbar-text mr-2 science">
-            <i class="fas fa-flask"></i> {{ gameService.science }}
-        </span>
-        <span class="navbar-text mr-2 credits">
-            <i class="fas fa-hashtag"></i> {{ gameService.credits }}
-        </span>
-        <span class="navbar-text mr-2 renown">
-            <i class="fas fa-rupee-sign"></i> {{ gameService.renown }}
-        </span>
-    </div>
+            <!-- <a class="navbar-brand" href="#">TTG</a> -->
+            <span class="navbar-text mr-2 manpower">
+                <i class="fas fa-leaf"></i> {{ gameService.manpower }}
+            </span>
+            <span class="navbar-text mr-2 production">
+                <i class="fas fa-industry"></i> {{ gameService.production }}
+            </span>
+            <span class="navbar-text mr-2 science">
+                <i class="fas fa-flask"></i> {{ gameService.science }}
+            </span>
+            <span class="navbar-text mr-2 credits">
+                <i class="fas fa-hashtag"></i> {{ gameService.credits }}
+            </span>
+            <span class="navbar-text mr-2 renown">
+                <i class="fas fa-rupee-sign"></i> {{ gameService.renown }}
+            </span>
+        </div>
         <button class="btn btn-sm btn-primary" type="button">End Turn</button>
     </nav>
+    <div id="cardToCredits" (click)="onCardDiscardClicked()" *ngIf="cardSelectedContext">Card -> Credits</div>
 </header>
 <div class="container">
     <div class="row">
         <div class="col-sm">
             <p>Space</p>
             <div class="d-flex flex-row">
-                <app-card *ngFor="let card of space" [card]="card"></app-card>
+                <app-card *ngFor="let card of space" [card]="card" (click)="onSpaceCardClicked(card)"></app-card>
             </div>
         </div>
     </div>
@@ -34,14 +35,15 @@
         <div class="col-sm-3">
             <p>Ships</p>
             <div class="card-deck">
-            <app-card *ngFor="let card of ships" [card]="card"></app-card>
+            <app-card *ngFor="let ship of ships" [card]="ship" (click)="onCardUsed(ship)"></app-card>
             </div>
+            <div id="deploySpaceShip" (click)="onDeploySpaceShipClicked()" *ngIf="cardSelectedContext">Deploy Space Ship</div>
         </div>
         <div class="col-sm-9">
             <p>Planets</p>
             <div *ngFor="let planet of planets">
-                <app-card-planet [card]="planet" [claimed]="true"></app-card-planet>
-                <app-card-colony [card]="colony" *ngFor="let colony of planet.colonies"></app-card-colony>
+                <app-card-planet [card]="planet" [claimed]="true" (click)="onPlanetClicked(planet)"></app-card-planet>
+                <app-card-colony [card]="colony" *ngFor="let colony of planet.colonies" (click)="onCardUsed(colony)"></app-card-colony>
             </div>
         </div>
     </div>
@@ -49,7 +51,7 @@
 <div class="hand-wrapper" [ngClass]="{ 'hand-wrapper-closed': !isHandOpen }">
     <div class="col-sm">
         <p (click)="toggleHand()">Hand</p>
-        <app-card *ngFor="let card of hand" [card]="card"></app-card>
+        <app-card *ngFor="let card of hand" [card]="card" (click)="onHandCardSelected(card)"></app-card>
     </div>
 </div>
 

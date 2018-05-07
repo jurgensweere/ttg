@@ -157,6 +157,56 @@ export class GameService {
     }
   }
 
+  discardCard(card:ProcessCard) {
+    this.credits ++;
+    this.playerDiscard.push(card);
+    this.playerHand.splice(this.playerHand.indexOf(card), 1);
+  }
+
+  colonize(planet:PlanetCard, colony:ColonyCard):boolean {
+    // Can we afford it?
+    if (this.credits < colony.cost) {
+      // toaster msg: you need more bla bla
+      console.log(`You need more credits, discard more cards`);
+      return false
+    }
+    if (!planet.canColonize(colony)) {
+      // toaster msg: Planet is full
+      console.log(`Planet has no space for ${colony.name}`);
+      return false;
+    }
+    // Pay
+    this.credits -= colony.cost;
+    // Colonize
+    planet.colonize(colony);
+    this.playerHand.splice(this.playerHand.indexOf(colony), 1);
+    return true;
+  }
+
+  colonizeNewPlanet(planet:PlanetCard, colony:ColonyCard):boolean {
+    // TODO: build a check if we have space for this planet.
+    if (this.colonize(planet, colony)) {
+      // we need to move the planet to the board
+      this.planets.push(planet);
+      this.space.splice(this.space.indexOf(planet), 1);
+      return true;
+    }
+    return false;
+  }
+
+  deployShip(ship:ShipCard):boolean {
+    //Check monies
+    if (this.credits < ship.cost) {
+      console.log(`You need more credits to deploy ${ship.name}`);
+      return false;
+    }
+    // Pay
+    this.credits -= ship.cost;
+    // Play
+    this.ships.push(ship);
+    this.playerHand.splice(this.playerHand.indexOf(ship), 1);
+  }
+
   useCard(card:ProcessCard) {
     if (card.tapped || !card.canAfford(this.manpower, this.production, this.science, this.credits, this.renown)) {
       return;

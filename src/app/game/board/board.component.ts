@@ -6,6 +6,7 @@ import { ShipCard } from '../ship-card';
 import { ProcessCard } from '../process-card';
 import { CardService } from '../card.service';
 import { Card } from '../card';
+import { ColonyCard } from '../colony-card';
 
 @Component({
   selector: 'app-board',
@@ -20,8 +21,10 @@ export class BoardComponent implements OnInit {
   hand: ProcessCard[];
   
   isHandOpen: boolean = false;
+
+  cardSelectedContext: ProcessCard;
   
-  constructor(public gameService:GameService, private cardService:CardService) { }
+  constructor(public gameService:GameService) { }
   
   ngOnInit() {
     this.gameService.setupGame();
@@ -31,21 +34,46 @@ export class BoardComponent implements OnInit {
     this.planets = this.gameService.planets;
     this.ships = this.gameService.ships;
     this.hand = this.gameService.playerHand;
-    
-    this.cardService.cardSelected$.subscribe(card => this.cardSelected(card) );
   }
 
   toggleHand() {
     this.isHandOpen = !this.isHandOpen;
   }
 
-  cardSelected(card:Card) {
+  onCardUsed(card:ProcessCard) {
+    this.gameService.useCard(card);
+  }
+
+  onHandCardSelected(card:ProcessCard) {
     this.isHandOpen = false;
-    if (card instanceof ProcessCard && this.hand.indexOf(card) >= 0) {
-      console.log('Selected from hand:', card);
-      // Go into some sort of play context for the card
-    } else if (card instanceof ProcessCard ) {
-      this.gameService.useCard(card);
+    this.cardSelectedContext = card;
+  }
+
+  onCardDiscardClicked() {
+    // discard cardselected context for credits.
+    this.gameService.discardCard(this.cardSelectedContext);
+    this.cardSelectedContext = null;
+  }
+
+  onPlanetClicked(planet:PlanetCard) {
+    // Colonize planet with cardselected context
+    if (this.cardSelectedContext instanceof ColonyCard) {
+      this.gameService.colonize(planet, this.cardSelectedContext);
     }
+    this.cardSelectedContext = null;
+  }
+
+  onSpaceCardClicked(spaceCard:Card) {
+    if (spaceCard instanceof PlanetCard && this.cardSelectedContext instanceof ColonyCard) {
+      this.gameService.colonizeNewPlanet(spaceCard, this.cardSelectedContext);
+    }
+    this.cardSelectedContext = null;
+  }
+
+  onDeploySpaceShipClicked() {
+    if (this.cardSelectedContext instanceof ShipCard) {
+      this.gameService.deployShip(this.cardSelectedContext);
+    }
+    this.cardSelectedContext = null;
   }
 }
