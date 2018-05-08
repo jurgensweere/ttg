@@ -51,9 +51,6 @@ export class GameService {
     // draw space card equal to the number of players
     this.drawSpaceCard(this.numPlayers);
 
-    // draw a card in hand
-    this.drawCard();
-
     // startTurn
     this.startTurn();
   }
