@@ -76,6 +76,11 @@
     background-color: rgba(0, 0, 0, 0.8);
     transition: max-height 200ms ease-out;
 }
+@media (min-width: 768px) {
+    .hand-wrapper.hand-wrapper.hand-wrapper-closed {
+        max-height: 100vh;
+    }       
+}
 .hand-wrapper.hand-wrapper-closed {
     max-height: 50px;
 }

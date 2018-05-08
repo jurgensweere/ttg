@@ -18,7 +18,7 @@
                 <i class="fas fa-rupee-sign"></i> {{ gameService.renown }}
             </span>
         </div>
-        <button class="btn btn-sm btn-primary" type="button">End Turn</button>
+        <button class="btn btn-sm btn-primary" type="button" (click)="gameService.endTurn()">End Turn</button>
     </nav>
     <div id="cardToCredits" (click)="onCardDiscardClicked()" *ngIf="cardSelectedContext">Card -> Credits</div>
 </header>
@@ -41,9 +41,9 @@
         </div>
         <div class="col-sm-9">
             <p>Planets</p>
-            <div *ngFor="let planet of planets">
-                <app-card-planet [card]="planet" [claimed]="true" (click)="onPlanetClicked(planet)"></app-card-planet>
-                <app-card-colony [card]="colony" *ngFor="let colony of planet.colonies" (click)="onCardUsed(colony)"></app-card-colony>
+            <div *ngFor="let planet of planets" class="clearfix mb-2">
+                <app-card-planet [card]="planet" [claimed]="true" (click)="onPlanetClicked(planet)" class="float-left mt-3"></app-card-planet>
+                <app-card-colony [card]="colony" *ngFor="let colony of planet.colonies" (click)="onCardUsed(colony)" class="float-left ml-4 mr-5"></app-card-colony>
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
 <div class="hand-wrapper" [ngClass]="{ 'hand-wrapper-closed': !isHandOpen }">
     <div class="col-sm">
         <p (click)="toggleHand()">Hand</p>
-        <app-card *ngFor="let card of hand" [card]="card" (click)="onHandCardSelected(card)"></app-card>
+        <app-card *ngFor="let card of hand" [card]="card" (click)="onHandCardSelected(card)" class="float-left"></app-card>
     </div>
 </div>
 

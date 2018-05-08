@@ -60,10 +60,22 @@ export class GameService {
 
   endTurn() {
     this.resetResources();
+    
+    // is this the end of the game?
+    if (this.gameOver()) {
+      // Count all renown;
+      
+      // Some message to player
+      console.log(`Game over.`);
+    } else {
+      this.startTurn();
+    }
   }
-
+  
   startTurn() {
+    this.untapCards();
     this.drawSpaceCard();
+    this.drawCard();
     // resolve events
   }
 
@@ -133,6 +145,13 @@ export class GameService {
     this.relinquished = [];
     
     this.renown = 0;
+  }
+
+  untapCards() {
+    this.planets.forEach(planet => {
+      planet.colonies.forEach(colony => colony.tapped = false);
+    });
+    this.ships.forEach(ship => ship.tapped = false);
   }
 
   drawCard(amount:number = 1) {
@@ -257,5 +276,9 @@ export class GameService {
           break;
       }
     });
+  }
+
+  gameOver():boolean {
+    return this.spaceDeck.length == 0;
   }
 }
