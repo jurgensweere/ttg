@@ -8,6 +8,7 @@ import { ColonyCard } from './colony-card';
 import { ShipCard } from './ship-card';
 import { EventCard } from './event-card';
 import { AnomalyCard } from './anomaly-card';
+import { MessageService } from './message.service';
 
 const AREA_CORE = 'core';
 const AREA_EXPANSE = 'expanse';
@@ -40,7 +41,7 @@ export class GameService {
 
     spaceCardTaken:boolean = false;
     
-    constructor(private cardService:CardService) { }
+    constructor(private cardService:CardService, private messageService:MessageService) { }
     
     setupGame() {
         this.resetBoard();
@@ -53,7 +54,7 @@ export class GameService {
     }
     
     startGame() {
-        console.log('Game started');
+        this.messageService.addDebug('Game started');
         // draw space card equal to the number of players
         this.drawSpaceCard(this.numPlayers);
         
@@ -70,7 +71,7 @@ export class GameService {
             // Count all renown;
             
             // Some message to player
-            console.log(`Game over.`);
+            this.messageService.addInfo(`Game over.`);
         } else {
             this.startTurn();
         }
@@ -191,12 +192,12 @@ export class GameService {
         // Can we afford it?
         if (this.credits < colony.cost) {
             // toaster msg: you need more bla bla
-            console.log(`You need more credits, discard more cards`);
+            this.messageService.addWarning(`You need more credits, discard more cards`);
             return false
         }
         if (!planet.canColonize(colony)) {
             // toaster msg: Planet is full
-            console.log(`Planet has no space for ${colony.name}`);
+            this.messageService.addWarning(`Planet has no space for ${colony.name}`);
             return false;
         }
         // Pay
@@ -209,12 +210,12 @@ export class GameService {
     
     colonizeNewPlanet(planet:PlanetCard, colony:ColonyCard):boolean {
         if (this.spaceCardTaken) {
-            console.log(`You can only take 1 card from space per turn.`);
+            this.messageService.addWarning(`You can only take 1 card from space per turn.`);
             return false;
         }
         this.spaceCardTaken = true;
         if (this.planets.length >= MAX_PLANET_COUNT) {
-            console.log(`You can only have ${MAX_PLANET_COUNT} planets. Relinquish a planet first.`);
+            this.messageService.addWarning(`You can only have ${MAX_PLANET_COUNT} planets. Relinquish a planet first.`);
             return false;
         }
         if (this.colonize(planet, colony)) {
@@ -229,7 +230,7 @@ export class GameService {
     buyEvent(eventCard:EventCard):boolean {
         // can we afford this?
         if(!eventCard.canAfford(this.manpower, this.production, this.science, this.credits, this.renown)) {
-            console.log(`You need more monies`);
+            this.messageService.addWarning(`You need more monies`);
             return false;
         }
         // Buy it
@@ -242,7 +243,7 @@ export class GameService {
     buyAnomaly(anomalyCard:AnomalyCard) {
         // can we afford this?
         if(!anomalyCard.canAfford(this.manpower, this.production, this.science, this.credits, this.renown)) {
-            console.log(`You need more monies`);
+            this.messageService.addWarning(`You need more monies`);
             return false;
         }
         // Buy it
@@ -272,7 +273,7 @@ export class GameService {
     deployShip(ship:ShipCard):boolean {
         //Check monies
         if (this.credits < ship.cost) {
-            console.log(`You need more credits to deploy ${ship.name}`);
+            this.messageService.addWarning(`You need more credits to deploy ${ship.name}`);
             return false;
         }
         // Pay

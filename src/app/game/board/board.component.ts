@@ -9,6 +9,7 @@ import { Card } from '../card';
 import { ColonyCard } from '../colony-card';
 import { EventCard } from '../event-card';
 import { AnomalyCard } from '../anomaly-card';
+import { MessageService, IMessage } from '../message.service';
 
 @Component({
   selector: 'app-board',
@@ -26,7 +27,7 @@ export class BoardComponent implements OnInit {
 
   cardSelectedContext: ProcessCard;
   
-  constructor(public gameService:GameService) { }
+  constructor(public gameService:GameService, public messageService:MessageService) { }
   
   ngOnInit() {
     this.gameService.setupGame();

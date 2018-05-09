@@ -16,6 +16,14 @@
     color: #c99e12;
 }
 
+.container {
+    position: relative;
+}
+
+.messages {
+    z-index: 1;
+}
+
 .card {
     width: 70px;
     height: 100px;

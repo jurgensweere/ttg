@@ -11,13 +11,16 @@ import { CardEventComponent } from './card-event/card-event.component';
 import { CardColonyComponent } from './card-colony/card-colony.component';
 import { CardPlanetComponent } from './card-planet/card-planet.component';
 import { CardShipComponent } from './card-ship/card-ship.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MessageService } from './message.service';
 
 @NgModule({
   imports: [
     CommonModule,
-    GameRoutingModule
+    GameRoutingModule,
+    NgbModule
   ],
-  providers: [GameService, CardService ],
+  providers: [GameService, CardService, MessageService],
   declarations: [BoardComponent, CardComponent, CardAnomalyComponent, CardEventComponent, CardColonyComponent, CardPlanetComponent, CardShipComponent]
 })
 export class GameModule { }

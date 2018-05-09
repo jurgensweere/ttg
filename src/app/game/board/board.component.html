@@ -1,28 +1,33 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-light">
-        <div class="mr-auto">
-            <!-- <a class="navbar-brand" href="#">TTG</a> -->
-            <span class="navbar-text mr-2 manpower">
-                <i class="fas fa-leaf"></i> {{ gameService.manpower }}
-            </span>
-            <span class="navbar-text mr-2 production">
-                <i class="fas fa-industry"></i> {{ gameService.production }}
-            </span>
-            <span class="navbar-text mr-2 science">
-                <i class="fas fa-flask"></i> {{ gameService.science }}
-            </span>
-            <span class="navbar-text mr-2 credits">
-                <i class="fas fa-hashtag"></i> {{ gameService.credits }}
-            </span>
-            <span class="navbar-text mr-2 renown">
-                <i class="fas fa-rupee-sign"></i> {{ gameService.renown }}
-            </span>
+        <div class="container">
+            <div class="mr-auto">
+                <!-- <a class="navbar-brand" href="#">TTG</a> -->
+                <span class="navbar-text mr-2 manpower">
+                    <i class="fas fa-leaf"></i> {{ gameService.manpower }}
+                </span>
+                <span class="navbar-text mr-2 production">
+                    <i class="fas fa-industry"></i> {{ gameService.production }}
+                </span>
+                <span class="navbar-text mr-2 science">
+                    <i class="fas fa-flask"></i> {{ gameService.science }}
+                </span>
+                <span class="navbar-text mr-2 credits">
+                    <i class="fas fa-hashtag"></i> {{ gameService.credits }}
+                </span>
+                <span class="navbar-text mr-2 renown">
+                    <i class="fas fa-rupee-sign"></i> {{ gameService.renown }}
+                </span>
+            </div>
+            <button class="btn btn-sm btn-primary" type="button" (click)="gameService.endTurn()">End Turn</button>
         </div>
-        <button class="btn btn-sm btn-primary" type="button" (click)="gameService.endTurn()">End Turn</button>
     </nav>
     <div id="cardToCredits" (click)="onCardDiscardClicked()" *ngIf="cardSelectedContext">Card -> Credits</div>
 </header>
 <div class="container">
+    <div class="messages position-absolute w-100" *ngIf="messageService.message">
+        <ngb-alert [type]="messageService.message.type" (close)="messageService.remove()">{{ messageService.message.text }}</ngb-alert>
+    </div>
     <div class="row">
         <div class="col-sm">
             <p>Space</p>
