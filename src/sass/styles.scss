@@ -24,26 +24,25 @@
     border: 0;
     background-color: #aaa;
     transition: transform 200ms ease-out;
-}
-.card,
-.card h5 {
-    font-size: 0.75rem;
-}
-.card .badge {
-    font-size: 1rem;
+    h5 {
+        font-size: 0.75rem;
+    }
+    .badge {
+        font-size: 1rem;
+    }
+    .renown {
+        position: absolute;
+        top: 1rem;
+        right: 0px;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 0 5px;
+    }
 }
 .card.card-planet,
 .card.card-event,
 .card.card-anomaly {
     width: 100px;
     height: 70px;
-}
-.card .renown {
-    position: absolute;
-    top: 1rem;
-    right: 0px;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 0 5px;
 }
 .card:hover {
     border: 2px solid #0474ac6b;
