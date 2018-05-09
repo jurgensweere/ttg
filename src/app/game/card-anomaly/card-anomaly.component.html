@@ -1,6 +1,6 @@
 <div class="card card-anomaly">
     <h5 class="card-title text-truncate">{{ card.name }}</h5>
-    <div class="renown">
+    <div class="renown" *ngIf="card.renown" [ngClass]="{ 'negative': card.renown < 0}">
         <i class="fas fa-rupee-sign"></i>: {{ card.renown }}
     </div>
 </div>

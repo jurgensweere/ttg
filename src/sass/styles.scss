@@ -25,10 +25,18 @@
     background-color: #aaa;
     transition: transform 200ms ease-out;
     font-size: 0.75rem;
+    @media (min-width: 768px) {
+        width: 140px;
+        height: 200px;
+        font-size: 1rem;
+    }
+    h5 {
+        font-size: 1rem;
+    }
     .badge {
         font-size: 1rem;
     }
-    .renown {
+    > .renown {
         position: absolute;
         top: 1rem;
         right: 0px;
@@ -36,6 +44,9 @@
         padding: 0 5px;
         @media (min-width: 768px) {
             top: 2rem;
+        }
+        &.negative {
+            color: #bd350c;
         }
     }
     &.card-planet, 
@@ -50,6 +61,8 @@
     }
     &:hover {
         // border: 2px solid #0474ac6b;
+        background-color: #436272;
+        cursor: pointer;
     }
     &.tapped {
         transform: rotate(90deg);
@@ -68,11 +81,6 @@
     .card-title.utility {
         background-color: #959695;
         color: inherit;
-    }
-    @media (min-width: 768px) {
-        width: 140px;
-        height: 200px;
-        font-size: 1rem;
     }
 }
 

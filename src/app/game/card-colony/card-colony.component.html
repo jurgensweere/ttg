@@ -1,6 +1,6 @@
 <div class="card card-colony" [ngClass]="{ 'tapped': card.tapped }">
     <h5 class="card-title text-truncate" [ngClass]="card.colonyType"><i class="fas fa-hashtag"></i>{{ card.cost }} {{ card.name }}</h5>
-    <div class="renown">
+    <div class="renown" *ngIf="card.renown" [ngClass]="{ 'negative': card.renown < 0}">
         <i class="fas fa-rupee-sign"></i>: {{ card.renown }}
     </div>
     <div class="process mt-2">

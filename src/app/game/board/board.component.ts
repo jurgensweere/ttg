@@ -7,6 +7,8 @@ import { ProcessCard } from '../process-card';
 import { CardService } from '../card.service';
 import { Card } from '../card';
 import { ColonyCard } from '../colony-card';
+import { EventCard } from '../event-card';
+import { AnomalyCard } from '../anomaly-card';
 
 @Component({
   selector: 'app-board',
@@ -66,6 +68,12 @@ export class BoardComponent implements OnInit {
   onSpaceCardClicked(spaceCard:Card) {
     if (spaceCard instanceof PlanetCard && this.cardSelectedContext instanceof ColonyCard) {
       this.gameService.colonizeNewPlanet(spaceCard, this.cardSelectedContext);
+    }
+    if (spaceCard instanceof EventCard) {
+      this.gameService.buyEvent(spaceCard);
+    }
+    if (spaceCard instanceof AnomalyCard) {
+      this.gameService.buyAnomaly(spaceCard);
     }
     this.cardSelectedContext = null;
   }
