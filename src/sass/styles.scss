@@ -24,9 +24,7 @@
     border: 0;
     background-color: #aaa;
     transition: transform 200ms ease-out;
-    h5 {
-        font-size: 0.75rem;
-    }
+    font-size: 0.75rem;
     .badge {
         font-size: 1rem;
     }
@@ -36,35 +34,48 @@
         right: 0px;
         background-color: rgba(0, 0, 0, 0.8);
         padding: 0 5px;
+        @media (min-width: 768px) {
+            top: 2rem;
+        }
+    }
+    &.card-planet, 
+    &.card.card-event,
+    &.card.card-anomaly {
+        width: 100px;
+        height: 70px;
+        @media (min-width: 768px) {
+            width: 200px;
+            height: 140px;
+        }
+    }
+    &:hover {
+        // border: 2px solid #0474ac6b;
+    }
+    &.tapped {
+        transform: rotate(90deg);
+    }
+    .card-title {
+        border-radius: 0.25rem .25rem 0 0;
+    }
+    .card-title.production {
+        background-color: #bb8901;
+        color: inherit;
+    }
+    .card-title.manpower {
+        background-color: #145c05;
+        color: inherit;
+    }
+    .card-title.utility {
+        background-color: #959695;
+        color: inherit;
+    }
+    @media (min-width: 768px) {
+        width: 140px;
+        height: 200px;
+        font-size: 1rem;
     }
 }
-.card.card-planet,
-.card.card-event,
-.card.card-anomaly {
-    width: 100px;
-    height: 70px;
-}
-.card:hover {
-    border: 2px solid #0474ac6b;
-}
-.card.tapped {
-    transform: rotate(90deg);
-}
-.card-title {
-    border-radius: 0.25rem .25rem 0 0;
-}
-.card-title.production {
-    background-color: #bb8901;
-    color: inherit;
-}
-.card-title.manpower {
-    background-color: #145c05;
-    color: inherit;
-}
-.card-title.utility {
-    background-color: #959695;
-    color: inherit;
-}
+
 .hand-wrapper {
     max-height: 100vh;
     position: absolute;
@@ -74,15 +85,15 @@
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.8);
     transition: max-height 200ms ease-out;
-}
-@media (min-width: 768px) {
-    .hand-wrapper.hand-wrapper.hand-wrapper-closed {
-        max-height: 100vh;
-    }       
-}
-.hand-wrapper.hand-wrapper-closed {
-    max-height: 50px;
-}
-.hand-wrapper > div > p {
-    color: #fff;
+
+    &.hand-wrapper-closed {
+        max-height: 50px;
+        @media (min-width: 768px) {
+            max-height: 100vh;
+        }
+    }
+
+    > div > p {
+        color: #fff;
+    }
 }
