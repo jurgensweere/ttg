@@ -209,6 +209,29 @@ export class GameService {
     }
 
     upgradeColony(source:ColonyCard, upgrade:ColonyCard):boolean {
+        if (source.colonyType != upgrade.colonyType) {
+            this.messageService.addWarning(`You can only upgrade a colony of the same type`);
+            return false;
+        }
+        if (source.cost >= upgrade.cost) {
+            this.messageService.addWarning(`You can only upgrade if the cost of the upgrade is higher`);
+            return false;
+        }
+        if (this.credits < (upgrade.cost - source.cost)) {
+            this.messageService.addWarning(`You need more credits, discard more cards`);
+            return false
+        }
+        // Pay
+        this.credits -= (upgrade.cost - source.cost);
+        // Upgrade
+        this.planets.forEach(planet => {
+            let index = planet.colonies.indexOf(source);
+            if (index != -1) {
+                planet.colonies[index] = upgrade;
+                upgrade.tapped = source.tapped;
+            }
+        });
+        this.playerHand.splice(this.playerHand.indexOf(upgrade), 1);
         return true;
     }
     

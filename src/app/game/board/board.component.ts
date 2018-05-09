@@ -44,8 +44,19 @@ export class BoardComponent implements OnInit {
     this.isHandOpen = !this.isHandOpen;
   }
 
-  onCardUsed(card:ProcessCard) {
+  onColonyClicked(card:ColonyCard) {
+    if (this.cardSelectedContext instanceof ColonyCard) {
+      this.gameService.upgradeColony(card, this.cardSelectedContext);
+      // this.ref.detectChanges();
+    } else {
+      this.gameService.useCard(card);
+    }
+    this.cardSelectedContext = null;
+  }
+
+  onShipClicked(card:ShipCard) {
     this.gameService.useCard(card);
+    this.cardSelectedContext = null;
   }
 
   onHandCardSelected(card:ProcessCard) {

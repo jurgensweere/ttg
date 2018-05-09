@@ -40,15 +40,15 @@
         <div class="col-sm-3">
             <p>Ships</p>
             <div class="card-deck">
-            <app-card *ngFor="let ship of ships" [card]="ship" (click)="onCardUsed(ship)"></app-card>
+            <app-card *ngFor="let ship of ships" [card]="ship" (click)="onShipClicked(ship)"></app-card>
             </div>
             <div id="deploySpaceShip" (click)="onDeploySpaceShipClicked()" *ngIf="cardSelectedContext">Deploy Space Ship</div>
         </div>
         <div class="col-sm-9">
             <p>Planets</p>
-            <div *ngFor="let planet of planets" class="clearfix mb-2">
+            <div *ngFor="let planet of gameService.planets" class="clearfix mb-2">
                 <app-card-planet [card]="planet" [claimed]="true" (click)="onPlanetClicked(planet, relinquish)" class="float-left mt-3"></app-card-planet>
-                <app-card-colony [card]="colony" *ngFor="let colony of planet.colonies" (click)="onCardUsed(colony)" class="float-left ml-4 mr-5"></app-card-colony>
+                <app-card-colony [card]="colony" *ngFor="let colony of planet.colonies" (click)="onColonyClicked(colony)" class="float-left ml-4 mr-5"></app-card-colony>
             </div>
         </div>
     </div>
