@@ -207,6 +207,10 @@ export class GameService {
         this.playerHand.splice(this.playerHand.indexOf(colony), 1);
         return true;
     }
+
+    upgradeColony(source:ColonyCard, upgrade:ColonyCard):boolean {
+        return true;
+    }
     
     colonizeNewPlanet(planet:PlanetCard, colony:ColonyCard):boolean {
         if (this.spaceCardTaken) {
@@ -220,7 +224,7 @@ export class GameService {
         }
         if (this.colonize(planet, colony)) {
             // we need to move the planet to the board
-            this.planets.push(planet);
+            this.planets.unshift(planet);
             this.space.splice(this.space.indexOf(planet), 1);
             return true;
         }
@@ -254,7 +258,14 @@ export class GameService {
     }
 
     relinquishPlanet(planet:PlanetCard) {
-        // TODO: some checks if this can be done.
+        if (this.planets.indexOf(planet) == 0) {
+            this.messageService.addWarning('You cannot relinquish your newest planet');
+            return false;
+        }
+        if (planet.colonies.length < planet.slots.length) {
+            this.messageService.addWarning('You can only relinquish a planet with all slots in use');
+            return false;
+        }
         this.moveToScorePile(planet);
     }
 

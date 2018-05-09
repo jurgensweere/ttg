@@ -10,6 +10,7 @@ import { ColonyCard } from '../colony-card';
 import { EventCard } from '../event-card';
 import { AnomalyCard } from '../anomaly-card';
 import { MessageService, IMessage } from '../message.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-board',
@@ -27,7 +28,7 @@ export class BoardComponent implements OnInit {
 
   cardSelectedContext: ProcessCard;
   
-  constructor(public gameService:GameService, public messageService:MessageService) { }
+  constructor(public gameService:GameService, public messageService:MessageService, private modalService: NgbModal) { }
   
   ngOnInit() {
     this.gameService.setupGame();
@@ -58,10 +59,17 @@ export class BoardComponent implements OnInit {
     this.cardSelectedContext = null;
   }
 
-  onPlanetClicked(planet:PlanetCard) {
+  onPlanetClicked(planet:PlanetCard, content) {
     // Colonize planet with cardselected context
     if (this.cardSelectedContext instanceof ColonyCard) {
       this.gameService.colonize(planet, this.cardSelectedContext);
+    } else {
+      this.modalService.open(content).result.then((result) => {
+        if (result == 'yes') {
+          this.gameService.relinquishPlanet(planet);
+        }
+      });
+      
     }
     this.cardSelectedContext = null;
   }

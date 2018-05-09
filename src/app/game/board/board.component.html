@@ -47,7 +47,7 @@
         <div class="col-sm-9">
             <p>Planets</p>
             <div *ngFor="let planet of planets" class="clearfix mb-2">
-                <app-card-planet [card]="planet" [claimed]="true" (click)="onPlanetClicked(planet)" class="float-left mt-3"></app-card-planet>
+                <app-card-planet [card]="planet" [claimed]="true" (click)="onPlanetClicked(planet, relinquish)" class="float-left mt-3"></app-card-planet>
                 <app-card-colony [card]="colony" *ngFor="let colony of planet.colonies" (click)="onCardUsed(colony)" class="float-left ml-4 mr-5"></app-card-colony>
             </div>
         </div>
@@ -60,3 +60,16 @@
     </div>
 </div>
 
+<ng-template #relinquish let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Relinquish Planet</h4>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure you want to relinquish this planet?</p>
+        <p>Relinquishing a planet earns you the renown points on the planet and its colonies.</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('yes')">Yes</button>
+        <button type="button" class="btn btn-outline-dark" (click)="c('no')">No</button>
+    </div>
+</ng-template>

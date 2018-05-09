@@ -11,7 +11,7 @@ export class MessageService {
   constructor() {
     this._success.subscribe((message) => this.message = message);
     this._success.pipe(
-      debounceTime(500000)
+      debounceTime(5000)
     ).subscribe(() => this.message = null);
   }
 
