@@ -7,7 +7,7 @@ import { AnomalyCard } from './anomaly-card';
 import { EventCard } from './event-card';
 import { SpaceCard } from './space-card';
 import { ShipCard } from './ship-card';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class CardService {
