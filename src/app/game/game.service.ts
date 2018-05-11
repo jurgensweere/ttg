@@ -372,6 +372,24 @@ export class GameService {
             }
         });
     }
+
+    manpowerToCard() {
+        if (this.manpower < 3) {
+            this.messageService.addWarning(`You need 3 manpower to get a card`);
+            return;
+        }
+        this.manpower -= 3;
+        this.drawCard();
+    }
+
+    productionToCard() {
+        if (this.production < 1) {
+            this.messageService.addWarning(`You need 1 production to get a card`);
+            return;
+        }
+        this.production -= 1;
+        this.drawCard();
+    }
     
     gameOver():boolean {
         return this.spaceDeck.length == 0;

@@ -2,20 +2,19 @@
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container">
             <div class="mr-auto">
-                <!-- <a class="navbar-brand" href="#">TTG</a> -->
-                <span class="navbar-text mr-2 manpower">
+                <button class="btn btn-secudary btn-sm mr-1" type="button" (click)="onManpowerClicked()" [disabled]="gameService.manpower < 3">
                     <i class="icon manpower"></i> {{ gameService.manpower }}
-                </span>
-                <span class="navbar-text mr-2 production">
+                </button>
+                <button class="btn btn-secudary btn-sm mr-1" type="button" (click)="onProductionClicked()" [disabled]="gameService.production < 1 ">
                     <i class="icon production"></i> {{ gameService.production }}
-                </span>
-                <span class="navbar-text mr-2 science">
+                </button>
+                <button class="btn btn-secudary btn-sm mr-1" type="button" (click)="onScienceClicked()" [disabled]="gameService.science < 1 ">
                     <i class="icon science"></i> {{ gameService.science }}
-                </span>
-                <span class="navbar-text mr-2 credits">
+                </button>
+                <span class="mr-1">
                     <i class="icon credits"></i> {{ gameService.credits }}
                 </span>
-                <span class="navbar-text mr-2 renown">
+                <span class="mr-1">
                     <i class="icon renown"></i> {{ gameService.renown }}
                 </span>
             </div>

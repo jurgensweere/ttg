@@ -104,4 +104,16 @@ export class BoardComponent implements OnInit {
     }
     this.cardSelectedContext = null;
   }
+
+  onManpowerClicked() {
+    this.gameService.manpowerToCard();
+  }
+
+  onProductionClicked() {
+    this.gameService.productionToCard();
+  }
+
+  onScienceClicked() {
+    // TODO: figure out how to implement a search in the discard pile
+  }
 }

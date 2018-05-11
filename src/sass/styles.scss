@@ -19,12 +19,17 @@
     position: relative;
 }
 .icon {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     display: inline-block;
     vertical-align: text-bottom;
     background-size: cover;
     background-repeat: no-repeat;
+    
+    @media (min-width: 768px) {
+        width: 20px;
+        height: 20px;
+    }
     &.manpower{
         background-image: url('/assets/icons/Manpower.png');
     }
