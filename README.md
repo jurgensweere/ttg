@@ -1,5 +1,12 @@
 # Ttg
 
+[ ] Discard cards at turn start
+[ ] Game end
+[ ] Relinquish effect bonus
+[ ] Bounty on cards
+[ ] Images on cards
+[ ] Nice css
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
 ## Development server
