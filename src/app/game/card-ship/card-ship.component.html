@@ -1,22 +1,22 @@
 <div class="card card-ship" [ngClass]="{ 'tapped': card.tapped }">
-    <h5 class="card-title text-truncate"><i class="fas fa-hashtag"></i>{{ card.cost }} {{ card.name }}</h5>
+    <h5 class="card-title text-truncate"><i class="icon credits"></i>{{ card.cost }} {{ card.name }}</h5>
     <div class="renown" *ngIf="card.renown" [ngClass]="{ 'negative': card.renown < 0}">
         <i class="fas fa-rupee-sign"></i>: {{ card.renown }}
     </div>
     <div class="process mt-2">
         <span class="input" *ngIf="card.input">
-            <span class="manpower" *ngIf="card.input.manpower"><i class="fas fa-leaf"></i>{{ card.input.manpower }}</span>
-            <span class="production" *ngIf="card.input.production"><i class="fas fa-industry"></i>{{ card.input.production }}</span>
-            <span class="science" *ngIf="card.input.science"><i class="fas fa-flask"></i>{{ card.input.science }}</span>
-            <span class="credits" *ngIf="card.input.card"><i class="fas fa-hashtag"></i>{{ card.input.card }}</span>
+            <span class="manpower" *ngIf="card.input.manpower"><i class="icon manpower"></i>{{ card.input.manpower }}</span>
+            <span class="production" *ngIf="card.input.production"><i class="icon production"></i>{{ card.input.production }}</span>
+            <span class="science" *ngIf="card.input.science"><i class="icon science"></i>{{ card.input.science }}</span>
+            <span class="credits" *ngIf="card.input.card"><i class="icon credits"></i>{{ card.input.card }}</span>
             <span class="renown" *ngIf="card.input.renown"><i class="fas fa-rupee-sign"></i>{{ card.input.renown }}</span>
             &gt;
         </span>
         <span class="output" *ngIf="card.output">
-            <span class="manpower" *ngIf="card.output.manpower"><i class="fas fa-leaf"></i>{{ card.output.manpower }}</span>
-            <span class="production" *ngIf="card.output.production"><i class="fas fa-industry"></i>{{ card.output.production }}</span>
-            <span class="science" *ngIf="card.output.science"><i class="fas fa-flask"></i>{{ card.output.science }}</span>
-            <span class="credits" *ngIf="card.output.card"><i class="fas fa-hashtag"></i>{{ card.output.card }}</span>
+            <span class="manpower" *ngIf="card.output.manpower"><i class="icon manpower"></i>{{ card.output.manpower }}</span>
+            <span class="production" *ngIf="card.output.production"><i class="icon production"></i>{{ card.output.production }}</span>
+            <span class="science" *ngIf="card.output.science"><i class="icon science"></i>{{ card.output.science }}</span>
+            <span class="credits" *ngIf="card.output.card"><i class="icon credits"></i>{{ card.output.card }}</span>
             <span class="renown" *ngIf="card.output.renown"><i class="fas fa-rupee-sign"></i>{{ card.output.renown }}</span>
         </span>
     </div>

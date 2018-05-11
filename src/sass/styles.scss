@@ -15,9 +15,28 @@
 .renown {
     color: #c99e12;
 }
-
 .container {
     position: relative;
+}
+.icon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &.manpower{
+        background-image: url('/assets/icons/Manpower.png');
+    }
+    &.production{
+        background-image: url('/assets/icons/Production.png');
+    }
+    &.credits{
+        background-image: url('/assets/icons/Credit.png');
+    }
+    &.science{
+        background-image: url('/assets/icons/Science.png');
+    }
 }
 
 .messages {
@@ -41,8 +60,26 @@
     h5 {
         font-size: 1rem;
     }
-    .badge {
-        font-size: 1rem;
+    .slot {
+        width: 20px;
+        height: 29px;
+        display: inline-block;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin-right: 3px;
+        @media (min-width: 768px) {
+            width: 30px;
+            height: 43px;
+        }
+        &.biosphere {
+            background-image: url('/assets/icons/BiosphereSlot.png');
+        }
+        &.deposits {
+            background-image: url('/assets/icons/DepositsSlot.png');
+        }
+        &.utility {
+            background-image: url('/assets/icons/UtilitySlot.png');
+        }
     }
     > .renown {
         position: absolute;

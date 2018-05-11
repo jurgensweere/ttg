@@ -4,19 +4,19 @@
             <div class="mr-auto">
                 <!-- <a class="navbar-brand" href="#">TTG</a> -->
                 <span class="navbar-text mr-2 manpower">
-                    <i class="fas fa-leaf"></i> {{ gameService.manpower }}
+                    <i class="icon manpower"></i> {{ gameService.manpower }}
                 </span>
                 <span class="navbar-text mr-2 production">
-                    <i class="fas fa-industry"></i> {{ gameService.production }}
+                    <i class="icon production"></i> {{ gameService.production }}
                 </span>
                 <span class="navbar-text mr-2 science">
-                    <i class="fas fa-flask"></i> {{ gameService.science }}
+                    <i class="icon science"></i> {{ gameService.science }}
                 </span>
                 <span class="navbar-text mr-2 credits">
-                    <i class="fas fa-hashtag"></i> {{ gameService.credits }}
+                    <i class="icon credits"></i> {{ gameService.credits }}
                 </span>
                 <span class="navbar-text mr-2 renown">
-                    <i class="fas fa-rupee-sign"></i> {{ gameService.renown }}
+                    <i class="icon renown"></i> {{ gameService.renown }}
                 </span>
             </div>
             <button class="btn btn-sm btn-primary" type="button" (click)="gameService.endTurn()">End Turn</button>
