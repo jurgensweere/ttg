@@ -390,6 +390,12 @@ export class GameService {
         this.production -= 1;
         this.drawCard();
     }
+
+    takeCard(card:ProcessCard) {
+        // we take the card from discard and put back in hand
+        this.playerDiscard.splice(this.playerDiscard.indexOf(card), 1);
+        this.playerHand.push(card);
+    }
     
     gameOver():boolean {
         return this.spaceDeck.length == 0;

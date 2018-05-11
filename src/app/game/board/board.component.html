@@ -2,13 +2,13 @@
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container">
             <div class="mr-auto">
-                <button class="btn btn-secudary btn-sm mr-1" type="button" (click)="onManpowerClicked()" [disabled]="gameService.manpower < 3">
+                <button class="btn btn-secudary btn-sm mr-1" type="button" (click)="onManpowerClicked()" [disabled]="gameService.manpower < 3" *ngIf="gameService.manpower">
                     <i class="icon manpower"></i> {{ gameService.manpower }}
                 </button>
-                <button class="btn btn-secudary btn-sm mr-1" type="button" (click)="onProductionClicked()" [disabled]="gameService.production < 1 ">
+                <button class="btn btn-secudary btn-sm mr-1" type="button" (click)="onProductionClicked()" [disabled]="gameService.production < 1 " *ngIf="gameService.production">
                     <i class="icon production"></i> {{ gameService.production }}
                 </button>
-                <button class="btn btn-secudary btn-sm mr-1" type="button" (click)="onScienceClicked()" [disabled]="gameService.science < 1 ">
+                <button class="btn btn-secudary btn-sm mr-1" type="button" (click)="onScienceClicked(science)" [disabled]="gameService.science < 1 " *ngIf="gameService.science">
                     <i class="icon science"></i> {{ gameService.science }}
                 </button>
                 <span class="mr-1">
@@ -70,5 +70,21 @@
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" (click)="c('yes')">Yes</button>
         <button type="button" class="btn btn-outline-dark" (click)="c('no')">No</button>
+    </div>
+</ng-template>
+
+<ng-template #science let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Take from Discard pile</h4>
+    </div>
+    <div class="modal-body">
+        <p>You can take one card from the discard pile for every science token.</p>
+        <div class="well">
+            <app-card *ngFor="let card of gameService.playerDiscard" [card]="card" (click)="onDiscardedCardSelected(card);c('close');" class="float-left"></app-card>
+        </div>
+        <p *ngIf="gameService.playerDiscard.length == 0">No cards in discard pile</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('cancel')">Cancel</button>
     </div>
 </ng-template>

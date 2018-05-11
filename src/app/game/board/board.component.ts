@@ -113,7 +113,11 @@ export class BoardComponent implements OnInit {
     this.gameService.productionToCard();
   }
 
-  onScienceClicked() {
-    // TODO: figure out how to implement a search in the discard pile
+  onScienceClicked(modal) {
+    this.modalService.open(modal);
+  }
+
+  onDiscardedCardSelected(card: ProcessCard) {
+    this.gameService.takeCard(card);
   }
 }
