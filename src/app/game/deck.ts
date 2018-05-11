@@ -433,7 +433,7 @@ export const PLAYER_DECK = [
 
 export const SPACE_DECK = [
     {
-        name: 'Space Race+',
+        name: 'Space Pirates',
         type: 'event',
         area: 'core',
         playerCount: 1,

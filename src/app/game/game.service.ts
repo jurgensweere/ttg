@@ -9,6 +9,7 @@ import { ShipCard } from './ship-card';
 import { EventCard } from './event-card';
 import { AnomalyCard } from './anomaly-card';
 import { MessageService } from './message.service';
+import { EventService } from './event.service';
 
 const AREA_CORE = 'core';
 const AREA_EXPANSE = 'expanse';
@@ -40,8 +41,13 @@ export class GameService {
     numPlayers: number = 1;
 
     spaceCardTaken:boolean = false;
+    cardsToDiscard:number = 0;
     
-    constructor(private cardService:CardService, private messageService:MessageService) { }
+    constructor(
+        private cardService:CardService,
+        private messageService:MessageService,
+        private eventService:EventService
+    ) { }
     
     setupGame() {
         this.resetBoard();
@@ -82,6 +88,7 @@ export class GameService {
         this.drawSpaceCard();
         this.drawCard();
         // TODO: resolve events
+        this.cardsToDiscard = this.eventService.getCardsToDiscard(this.space);
     }
     
     createSpaceDeck() {
@@ -151,6 +158,7 @@ export class GameService {
         
         this.renown = 0;
         this.spaceCardTaken = false;
+        this.cardsToDiscard = 0;
     }
     
     untapCards() {
