@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { GameService } from '../game.service';
 import { SpaceCard } from '../space-card';
 import { PlanetCard } from '../planet-card';
@@ -23,17 +23,17 @@ export class BoardComponent implements OnInit {
   planets: PlanetCard[];
   ships: ShipCard[];
   hand: ProcessCard[];
-  
-  isHandOpen: boolean = false;
+
+  isHandOpen = false;
 
   cardSelectedContext: ProcessCard;
-  
-  constructor(public gameService:GameService, public messageService:MessageService, private modalService: NgbModal) { }
-  
+
+  constructor(public gameService: GameService, public messageService: MessageService, private modalService: NgbModal) { }
+
   ngOnInit() {
     this.gameService.setupGame();
     this.gameService.startGame();
-    
+
     this.space = this.gameService.space;
     this.planets = this.gameService.planets;
     this.ships = this.gameService.ships;
@@ -44,7 +44,7 @@ export class BoardComponent implements OnInit {
     this.isHandOpen = !this.isHandOpen;
   }
 
-  onColonyClicked(card:ColonyCard) {
+  onColonyClicked(card: ColonyCard) {
     if (this.cardSelectedContext instanceof ColonyCard) {
       this.gameService.upgradeColony(card, this.cardSelectedContext);
       // this.ref.detectChanges();
@@ -54,12 +54,12 @@ export class BoardComponent implements OnInit {
     this.cardSelectedContext = null;
   }
 
-  onShipClicked(card:ShipCard) {
+  onShipClicked(card: ShipCard) {
     this.gameService.useCard(card);
     this.cardSelectedContext = null;
   }
 
-  onHandCardSelected(card:ProcessCard) {
+  onHandCardSelected(card: ProcessCard) {
     this.isHandOpen = false;
     this.cardSelectedContext = card;
   }
@@ -70,22 +70,22 @@ export class BoardComponent implements OnInit {
     this.cardSelectedContext = null;
   }
 
-  onPlanetClicked(planet:PlanetCard, content) {
+  onPlanetClicked(planet: PlanetCard, content) {
     // Colonize planet with cardselected context
     if (this.cardSelectedContext instanceof ColonyCard) {
       this.gameService.colonize(planet, this.cardSelectedContext);
     } else {
       this.modalService.open(content).result.then((result) => {
-        if (result == 'yes') {
+        if (result === 'yes') {
           this.gameService.relinquishPlanet(planet);
         }
       });
-      
+
     }
     this.cardSelectedContext = null;
   }
 
-  onSpaceCardClicked(spaceCard:Card) {
+  onSpaceCardClicked(spaceCard: Card) {
     if (spaceCard instanceof PlanetCard && this.cardSelectedContext instanceof ColonyCard) {
       this.gameService.colonizeNewPlanet(spaceCard, this.cardSelectedContext);
     }
@@ -119,5 +119,9 @@ export class BoardComponent implements OnInit {
 
   onDiscardedCardSelected(card: ProcessCard) {
     this.gameService.takeCard(card);
+  }
+
+  onCardDiscarded(card: ProcessCard) {
+    this.gameService.discardCard(card, true);
   }
 }

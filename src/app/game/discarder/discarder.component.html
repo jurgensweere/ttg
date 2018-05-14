@@ -1,0 +1,12 @@
+<ng-template #discarder let-c="close">
+  <div class="modal-header">
+    <h4 class="modal-title">Discard a card</h4>
+  </div>
+  <div class="modal-body">
+    <p>You must discard {{ discard }} card<span *ngIf="discard > 1">s</span>. Because of reasons</p>
+    <div class="well">
+      <app-card *ngFor="let card of hand" [card]="card" (click)="onCardSelected(card);c('close');"
+        class="float-left"></app-card>
+    </div>
+  </div>
+</ng-template>

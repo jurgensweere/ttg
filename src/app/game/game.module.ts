@@ -14,6 +14,7 @@ import { CardShipComponent } from './card-ship/card-ship.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MessageService } from './message.service';
 import { EventService } from './event.service';
+import { DiscarderComponent } from './discarder/discarder.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,15 @@ import { EventService } from './event.service';
     NgbModule
   ],
   providers: [GameService, CardService, MessageService, EventService],
-  declarations: [BoardComponent, CardComponent, CardAnomalyComponent, CardEventComponent, CardColonyComponent, CardPlanetComponent, CardShipComponent]
+  declarations: [
+    BoardComponent,
+    CardComponent,
+    CardAnomalyComponent,
+    CardEventComponent,
+    CardColonyComponent,
+    CardPlanetComponent,
+    CardShipComponent,
+    DiscarderComponent
+  ]
 })
 export class GameModule { }

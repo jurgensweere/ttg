@@ -23,6 +23,7 @@
     </nav>
     <div id="cardToCredits" (click)="onCardDiscardClicked()" *ngIf="cardSelectedContext">Card -> Credits</div>
 </header>
+<app-discarder [discard]="gameService.cardsToDiscard" [hand]="hand" (cardDiscarded)="onCardDiscarded($event)"></app-discarder>
 <div class="container">
     <div class="messages position-absolute w-100" *ngIf="messageService.message">
         <ngb-alert [type]="messageService.message.type" (close)="messageService.remove()">{{ messageService.message.text }}</ngb-alert>
