@@ -7,6 +7,7 @@
 - [x] Hazzards on cards
 - [ ] Images on cards
 - [ ] Nice css
+- [ ] Find and fix issue with not all space cards showing up
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
