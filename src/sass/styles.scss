@@ -68,25 +68,51 @@
             font-size: 1rem;
         }
     }
-    .slot {
-        width: 20px;
-        height: 29px;
-        display: inline-block;
-        background-size: cover;
-        background-repeat: no-repeat;
-        margin-right: 3px;
+    .cost {
+        position: absolute;
+        left: 0;
+        top: 20px;
+        bottom: 0;
+        width: 15px;
+        background-color: #666;
+        text-align: center;
         @media (min-width: 768px) {
-            width: 30px;
-            height: 43px;
+            width: 25px;
         }
-        &.biosphere {
-            background-image: url('/assets/icons/BiosphereSlot.png');
+    }
+    .bounty {
+        position: absolute;
+        left: 40%;
+        bottom: 50%;
+    }
+    .slots {
+        position: absolute;
+        bottom: 5px;
+        left: 15px;
+        @media (min-width: 768px) {
+            left: 30px;
+            bottom: 15px;
         }
-        &.deposits {
-            background-image: url('/assets/icons/DepositsSlot.png');
-        }
-        &.utility {
-            background-image: url('/assets/icons/UtilitySlot.png');
+        .slot {
+            width: 13px;
+            height: 18px;
+            display: inline-block;
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin-right: 3px;
+            @media (min-width: 768px) {
+                width: 30px;
+                height: 43px;
+            }
+            &.biosphere {
+                background-image: url('/assets/icons/BiosphereSlot.png');
+            }
+            &.deposits {
+                background-image: url('/assets/icons/DepositsSlot.png');
+            }
+            &.utility {
+                background-image: url('/assets/icons/UtilitySlot.png');
+            }
         }
     }
     > .renown {

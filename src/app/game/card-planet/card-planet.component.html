@@ -4,7 +4,15 @@
         <span class="slot"
               [ngClass]="{'deposits': slot == 'production', 'biosphere': slot == 'manpower', 'utility': slot == 'utility'}"
               *ngFor="let slot of card.slots">
-    </span>
+        </span>
+    </div>
+    <div class="bounty" *ngIf="card.bounty">
+        <span class="manpower" *ngIf="card.bounty.manpower">
+            <i class="icon manpower"></i>{{ card.bounty.manpower }}</span>
+        <span class="production" *ngIf="card.bounty.production">
+            <i class="icon production"></i>{{ card.bounty.production }}</span>
+        <span class="science" *ngIf="card.bounty.science">
+            <i class="icon science"></i>{{ card.bounty.science }}</span>
     </div>
     <span *ngIf="!claimed" style="color: tomato"><i class="fas fa-exclamation-triangle" *ngFor="let h of hazzards"></i></span>
     <div class="renown" *ngIf="card.renown" [ngClass]="{ 'negative': card.renown < 0}">

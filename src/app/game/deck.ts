@@ -522,7 +522,7 @@ export const SPACE_DECK = [
         area: 'core',
         playerCount: 1,
         slots: ['utility', 'utility'],
-        bonus: { //What is this bonus exactly?
+        bounty: {
             production: 2
         },
         renown: 2

@@ -206,6 +206,32 @@ export class GameService {
         this.playerHand.splice(this.playerHand.indexOf(card), 1);
     }
 
+    useBounty(card:SpaceCard) {
+        let bountyEmpty = false;
+        Object.keys(card.bounty).forEach(currency => {
+            switch (currency) {
+                case 'manpower':
+                    this.manpower++;
+                    break;
+                case 'production':
+                    this.production++;
+                    break;
+                case 'science':
+                    this.science++;
+                    break;
+                default:
+                    break;
+            }
+            card.bounty[currency]--;
+            if (card.bounty[currency] === 0) {
+                bountyEmpty = true;
+            }
+        });
+        if (bountyEmpty) {
+            card.bounty = null;
+        }
+    }
+
     colonize(planet: PlanetCard, colony: ColonyCard): boolean {
         // Can we afford it?
         if (this.credits < colony.cost) {

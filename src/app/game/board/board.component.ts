@@ -74,6 +74,8 @@ export class BoardComponent implements OnInit {
     // Colonize planet with cardselected context
     if (this.cardSelectedContext instanceof ColonyCard) {
       this.gameService.colonize(planet, this.cardSelectedContext);
+    } else if (planet.bounty) {
+      this.gameService.useBounty(planet);
     } else {
       this.modalService.open(content).result.then((result) => {
         if (result === 'yes') {
@@ -90,10 +92,18 @@ export class BoardComponent implements OnInit {
       this.gameService.colonizeNewPlanet(spaceCard, this.cardSelectedContext);
     }
     if (spaceCard instanceof EventCard) {
-      this.gameService.buyEvent(spaceCard);
+      if (spaceCard.bounty) {
+        this.gameService.useBounty(spaceCard);
+      } else {
+        this.gameService.buyEvent(spaceCard);
+      }
     }
     if (spaceCard instanceof AnomalyCard) {
-      this.gameService.buyAnomaly(spaceCard);
+      if (spaceCard.bounty) {
+        this.gameService.useBounty(spaceCard);
+      } else {
+        this.gameService.buyAnomaly(spaceCard);
+      }
     }
     this.cardSelectedContext = null;
   }
