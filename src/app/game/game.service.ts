@@ -9,7 +9,7 @@ import { ShipCard } from './ship-card';
 import { EventCard } from './event-card';
 import { AnomalyCard } from './anomaly-card';
 import { MessageService } from './message.service';
-import { EventService } from './event.service';
+import { EventService, EventBonus } from './event.service';
 
 const AREA_CORE = 'core';
 const AREA_EXPANSE = 'expanse';
@@ -343,6 +343,16 @@ export class GameService {
         if (planet.colonies.length < planet.slots.length) {
             this.messageService.addWarning('You can only relinquish a planet with all slots in use');
             return false;
+        }
+        // Add bonusses from events
+        let bonus: EventBonus = this.eventService.getRelinquishBonus(this.space);
+
+        this.renown += bonus.renown;
+        this.manpower += bonus.manpower;
+        this.production += bonus.production;
+        this.science += bonus.science;
+        if (bonus.card) {
+            this.drawCard(bonus.card);
         }
         this.moveToScorePile(planet);
     }

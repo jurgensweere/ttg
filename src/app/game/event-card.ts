@@ -1,7 +1,7 @@
 import { SpaceCard } from "./space-card";
 
 export class EventCard extends SpaceCard {
-    effect: any[];
+    effect: any;
     cost:any; // TODO: maybe convert to same thing as input?
 
     deserialize(input: any): EventCard {

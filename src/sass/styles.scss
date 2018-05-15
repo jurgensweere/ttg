@@ -42,6 +42,9 @@
     &.science{
         background-image: url('/assets/icons/Science.png');
     }
+    &.relinquish {
+        background-image: url('/assets/icons/SystemIcon.png')
+    }
 }
 
 .messages {
@@ -84,6 +87,11 @@
         position: absolute;
         left: 40%;
         bottom: 50%;
+    }
+    .effect {
+        position: absolute;
+        left: 40%;
+        bottom: 10%;
     }
     .slots {
         position: absolute;

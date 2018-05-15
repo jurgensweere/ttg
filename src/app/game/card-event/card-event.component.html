@@ -14,6 +14,14 @@
         <span class="science" *ngIf="card.bounty.science">
             <i class="icon science"></i>{{ card.bounty.science }}</span>
     </div>
+    <div class="effect" *ngIf="card.effect">
+        <span class="turn" *ngIf="card.effect.turn">
+            <span *ngIf="card.effect.turn.card">{{ card.effect.turn.card }} <i class="icon credits"></i></span>
+        </span>
+        <span class="relinquish" *ngIf="card.effect.relinquish">
+            <span *ngIf="card.effect.relinquish.renown"><i class="icon relinquish"></i> +{{ card.effect.relinquish.renown }} <i class="fas fa-rupee-sign"></i></span>
+        </span>
+    </div>
     <div class="renown" *ngIf="card.renown" [ngClass]="{ 'negative': card.renown < 0}">
         <i class="fas fa-rupee-sign"></i>: {{ card.renown }}
     </div>

@@ -441,11 +441,11 @@ export const SPACE_DECK = [
             production: 2
         },
         renown: 3,
-        effect: [{
+        effect: {
             turn: {
                 card: -1
             }
-        }]
+        }
     }, {
         name: 'Alien Artefact',
         type: 'anomaly',
@@ -495,11 +495,11 @@ export const SPACE_DECK = [
             production: 3
         },
         renown: 4,
-        effect: [{
+        effect: {
             relinquish: {
                 renown: 2
             }
-        }]
+        }
     }, {
         name: 'Old World',
         type: 'planet',

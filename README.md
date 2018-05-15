@@ -2,7 +2,7 @@
 
 - [x] Discard cards at turn start
 - [x] Game end
-- [ ] Relinquish effect bonus
+- [x] Relinquish effect bonus
 - [x] Bounty on cards
 - [x] Hazzards on cards
 - [ ] Images on cards
